@@ -14,7 +14,9 @@ export class MapComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  ngAfterViewInit() {
     const latLng = this.coords.split(',');
     const lat = Number(latLng[0]);
     const lng = Number(latLng[1]);

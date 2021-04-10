@@ -43,10 +43,14 @@ export class PostsService {
     });
   }
 
-  uploadImage(image) {
+  async uploadImage(image) {
     const headers = new HttpHeaders().set('x-token', this.userService.token);
+
+    const response = await fetch(image);
+    const blob = await response.blob();
+
     const formData = new FormData();
-    formData.append('image', image);
+    formData.append('image', blob);
 
     this.http.post(`${API}/posts/upload`, formData, { headers })
     .subscribe(
